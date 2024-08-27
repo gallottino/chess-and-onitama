@@ -1,1 +1,3 @@
-# Chess Onitama
+# chess_onitama
+
+A new Flutter project.
