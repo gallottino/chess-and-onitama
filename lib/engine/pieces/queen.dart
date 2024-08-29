@@ -11,7 +11,7 @@ class Queen extends Piece {
   }
 
   @override
-  Movement evaluateMovement(Position position, {required Movement current}) {
+  MovementKind evaluateMovement(Position position, {required MovementKind current}) {
     // TODO: implement evaluateMovement
     throw UnimplementedError();
   }

@@ -10,7 +10,7 @@ class Knight extends Piece {
   List<Position> legalMoves(Position from) => throw UnimplementedError();
 
   @override
-  Movement evaluateMovement(Position position, {required Movement current}) {
+  MovementKind evaluateMovement(Position position, {required MovementKind current}) {
     // TODO: implement evaluateMovement
     throw UnimplementedError();
   }

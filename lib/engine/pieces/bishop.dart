@@ -11,31 +11,31 @@ class Bishop extends Piece {
     var legalMoves = <Position>[];
 
     /// directions: [right-up, left-down, right-down, left-up]
-    List<Movement> directions = [
-      Movement.start,
-      Movement.start,
-      Movement.start,
-      Movement.start
+    List<MovementKind> directions = [
+      MovementKind.start,
+      MovementKind.start,
+      MovementKind.start,
+      MovementKind.start
     ];
 
     for (var i = 1; i < 8; i++) {
       directions[0] = evaluateMovement(current: directions[0], Position(row + i, col + i));
-      if (directions[0] != Movement.stop) {
+      if (directions[0] != MovementKind.stop) {
         legalMoves.add(Position(row + i, col + i));
       }
 
       directions[1] = evaluateMovement(current: directions[1], Position(row - i, col - i));
-      if (directions[1] != Movement.stop) {
+      if (directions[1] != MovementKind.stop) {
         legalMoves.add(Position(row - i, col - i));
       }
 
       directions[2] = evaluateMovement(current: directions[2], Position(row + i, col - i));
-      if (directions[2] != Movement.stop) {
+      if (directions[2] != MovementKind.stop) {
         legalMoves.add(Position(row + i, col - i));
       }
 
       directions[3] = evaluateMovement(current: directions[3], Position(row - i, col + i));
-      if (directions[3] != Movement.stop) {
+      if (directions[3] != MovementKind.stop) {
         legalMoves.add(Position(row - i, col + i));
       }
     }
@@ -43,24 +43,24 @@ class Bishop extends Piece {
   }
 
   @override
-  Movement evaluateMovement(Position position, {required Movement current}) {
-    if (current == Movement.stop || current == Movement.capture) {
-      return Movement.stop;
+  MovementKind evaluateMovement(Position position, {required MovementKind current}) {
+    if (current == MovementKind.stop || current == MovementKind.capture) {
+      return MovementKind.stop;
     }
 
     var (row, col) = position.values;
     if (row < 0 || row >= 8 || col < 0 || col >= 8) {
-      return Movement.stop;
+      return MovementKind.stop;
     }
 
     Piece? piece = chess.getPiece((row, col));
     if (piece != null) {
       if (piece.chessColor == chessColor) {
-        return Movement.stop;
+        return MovementKind.stop;
       } else {
-        return Movement.capture;
+        return MovementKind.capture;
       }
     }
-    return Movement.move;
+    return MovementKind.move;
   }
 }
