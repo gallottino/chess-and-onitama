@@ -9,23 +9,22 @@ mixin OffsetMovement implements Movement {
   @override
   List<Position> legalMoves(Position from) {
     if (offsets == null) {
-      throw UnimplementedError('Offsets are not set for this piece');
+      throw UnimplementedError('field "offsets" is not set for this piece');
     }
 
     if (maxMoves == null) {
-      throw UnimplementedError('Max moves are not set for this piece');
+      throw UnimplementedError('field "maxMoves" is not set for this piece');
     }
 
-    var (row, col) = from.values;
     var legalMoves = <Position>[];
 
     List<MovementKind> movements =
         List.filled(offsets!.length, MovementKind.start);
 
     for (var index = 0; index < offsets!.length; index++) {
-      for (var i = 1; i <= maxMoves!; i++) {
-        var (rowOffset, colOffset) = offsets![index].values;
-        var newPosition = Position(row + rowOffset * i, col + colOffset * i);
+      for (var currentMove = 1; currentMove <= maxMoves!; currentMove++) {
+        var offset = offsets![index] * currentMove;
+        var newPosition = from + offset;
 
         movements[index] =
             evaluateMovement(current: movements[index], newPosition);

@@ -3,6 +3,14 @@ class Position implements Comparable<Position> {
   const Position(this.row, this.col);
   (int, int) get values => (row, col);
 
+  Position operator +(Position other) {
+    return Position(row + other.row, col + other.col);
+  }
+
+  Position operator *(int value) {
+    return Position(row * value, col * value);
+  }
+
   @override
   String toString() => '($row, $col)';
 
