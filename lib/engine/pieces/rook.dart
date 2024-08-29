@@ -11,5 +11,4 @@ class Rook extends Piece with OffsetMovement {
       const Position(1, 0),
     ];
   }
-
 }
