@@ -9,7 +9,6 @@ import 'package:chess_onitama/engine/utilities/color.dart';
 import 'package:chess_onitama/engine/moveset/movement.dart';
 
 abstract class Piece extends Movement {
-
   const Piece({required super.chess, required super.chessColor});
 
   factory Piece.fromUnicode(String piece, Chess board) {

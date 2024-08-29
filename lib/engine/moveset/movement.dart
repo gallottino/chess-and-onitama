@@ -11,7 +11,4 @@ abstract class Movement {
   const Movement({required this.chess, required this.chessColor});
 
   List<Position> legalMoves(Position from);
-
-  MovementKind evaluateMovement(Position position,
-      {required MovementKind current});
 }

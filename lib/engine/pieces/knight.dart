@@ -1,5 +1,4 @@
 import 'package:chess_onitama/engine/pieces/piece.dart';
-import 'package:chess_onitama/engine/moveset/movement.dart';
 import 'package:chess_onitama/engine/utilities/position.dart';
 
 class Knight extends Piece {
@@ -8,11 +7,4 @@ class Knight extends Piece {
   @override
   // TODO: implement legalMoves
   List<Position> legalMoves(Position from) => throw UnimplementedError();
-
-  @override
-  MovementKind evaluateMovement(Position position,
-      {required MovementKind current}) {
-    // TODO: implement evaluateMovement
-    throw UnimplementedError();
-  }
 }
