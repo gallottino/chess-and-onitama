@@ -1,4 +1,5 @@
 import 'package:chess_onitama/engine/pieces/piece.dart';
+import 'package:chess_onitama/engine/utilities/position.dart';
 
 class Chess {
   final List<List<Piece?>> board;
@@ -25,8 +26,13 @@ class Chess {
     return chess;
   }
 
-  Piece? getPiece((int, int) position) {
-    var (row, col) = position;
-    return board[row][col];
+  bool isEmptyAt(Position position) {
+    var (row, col) = position.values;
+    return board[row][col] == null;
+  }
+
+  Piece getPieceAt(Position position) {
+    var (row, col) = position.values;
+    return board[row][col]!;
   }
 }

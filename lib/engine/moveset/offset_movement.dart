@@ -12,10 +12,10 @@ mixin OffsetMovement implements Movement {
       throw UnimplementedError('Offsets are not set for this piece');
     }
 
-    if(maxMoves == null) {
+    if (maxMoves == null) {
       throw UnimplementedError('Max moves are not set for this piece');
     }
-    
+
     var (row, col) = from.values;
     var legalMoves = <Position>[];
 
@@ -49,14 +49,15 @@ mixin OffsetMovement implements Movement {
       return MovementKind.stop;
     }
 
-    Piece? piece = chess.getPiece((row, col));
-    if (piece != null) {
-      if (piece.chessColor == chessColor) {
-        return MovementKind.stop;
-      } else {
-        return MovementKind.capture;
-      }
+    if (chess.isEmptyAt(newPosition)) {
+      return MovementKind.move;
     }
-    return MovementKind.move;
+
+    Piece piece = chess.getPieceAt(newPosition);
+    if (piece.chessColor != chessColor) {
+      return MovementKind.capture;
+    }
+
+    return MovementKind.stop;
   }
 }
