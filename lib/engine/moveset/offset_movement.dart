@@ -5,7 +5,8 @@ mixin OffsetMovement implements Movement {
 
   List<Position>? offsets;
 
-  List<Position> reachablePosition(Position from) {
+  @override
+  List<Position> legalMoves(Position from) {
     
     if(offsets == null) {
       throw UnimplementedError('Offsets are not set for this piece');

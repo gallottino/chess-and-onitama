@@ -7,15 +7,12 @@ import 'package:chess_onitama/engine/pieces/queen.dart';
 import 'package:chess_onitama/engine/pieces/rook.dart';
 import 'package:chess_onitama/engine/utilities/color.dart';
 import 'package:chess_onitama/engine/moveset/movement.dart';
-import 'package:chess_onitama/engine/utilities/position.dart';
 
-abstract class Piece {
+abstract class Piece implements Movement {
   final Chess chess;
   final ChessColor chessColor;
 
   const Piece({required this.chess, required this.chessColor});
-
-  List<Position> legalMoves(Position from);
 
   factory Piece.fromUnicode(String piece, Chess board) {
     Map<String, Function> pieces = {
@@ -40,7 +37,4 @@ abstract class Piece {
 
     return newPiece.call();
   }
-
-  MovementKind evaluateMovement(Position position,
-      {required MovementKind current});
 }

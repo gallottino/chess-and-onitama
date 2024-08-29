@@ -14,15 +14,12 @@ class Bishop extends Piece with OffsetMovement{
   }
 
   @override
-  List<Position> legalMoves(Position from) => reachablePosition(from);
-  
-  @override
-  MovementKind evaluateMovement(Position position, {required MovementKind current}) {
+  MovementKind evaluateMovement(Position newPosition, {required MovementKind current}) {
     if (current == MovementKind.stop || current == MovementKind.capture) {
       return MovementKind.stop;
     }
 
-    var (row, col) = position.values;
+    var (row, col) = newPosition.values;
     if (row < 0 || row >= 8 || col < 0 || col >= 8) {
       return MovementKind.stop;
     }
