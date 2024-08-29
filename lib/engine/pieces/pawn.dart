@@ -11,7 +11,8 @@ class Pawn extends Piece {
   }
 
   @override
-  MovementKind evaluateMovement(Position position, {required MovementKind current}) {
+  MovementKind evaluateMovement(Position position,
+      {required MovementKind current}) {
     // TODO: implement evaluateMovement
     throw UnimplementedError();
   }

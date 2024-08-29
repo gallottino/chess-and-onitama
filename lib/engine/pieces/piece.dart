@@ -41,5 +41,6 @@ abstract class Piece {
     return newPiece.call();
   }
 
-  MovementKind evaluateMovement(Position position, {required MovementKind current});
+  MovementKind evaluateMovement(Position position,
+      {required MovementKind current});
 }
