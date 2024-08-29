@@ -4,6 +4,7 @@ import 'package:chess_onitama/engine/utilities/position.dart';
 
 class Queen extends Piece with OffsetMovement {
   Queen({required super.chess, required super.chessColor}) {
+    maxMoves = 7;
     offsets = [
       const Position(-1, 0),
       const Position(0, -1),

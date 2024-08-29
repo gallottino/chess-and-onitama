@@ -4,6 +4,7 @@ import 'package:chess_onitama/engine/utilities/position.dart';
 
 mixin OffsetMovement implements Movement {
   List<Position>? offsets;
+  int? maxMoves;
 
   @override
   List<Position> legalMoves(Position from) {
@@ -11,6 +12,10 @@ mixin OffsetMovement implements Movement {
       throw UnimplementedError('Offsets are not set for this piece');
     }
 
+    if(maxMoves == null) {
+      throw UnimplementedError('Max moves are not set for this piece');
+    }
+    
     var (row, col) = from.values;
     var legalMoves = <Position>[];
 
@@ -18,7 +23,7 @@ mixin OffsetMovement implements Movement {
         List.filled(offsets!.length, MovementKind.start);
 
     for (var index = 0; index < offsets!.length; index++) {
-      for (var i = 1; i < 8; i++) {
+      for (var i = 1; i <= maxMoves!; i++) {
         var (rowOffset, colOffset) = offsets![index].values;
         var newPosition = Position(row + rowOffset * i, col + colOffset * i);
 
