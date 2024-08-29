@@ -3,8 +3,7 @@ import 'package:chess_onitama/engine/utilities/position.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-
-  test('King legalMoves without collision', (){
+  test('King legalMoves without collision', () {
     /// ♔	♕	♖	♗	♘	♙	♚	♛	♜	♝	♞	♟
     var chessboard = [
       ['■', '□', '■', '□', '■', '□', '■', '□'],
@@ -35,10 +34,9 @@ void main() {
     expected.sort();
 
     expect(actual, expected);
-    
   });
 
-  test('King legalMoves with collision', (){
+  test('King legalMoves with collision', () {
     /// ♔	♕	♖	♗	♘	♙	♚	♛	♜	♝	♞	♟
     var chessboard = [
       ['■', '□', '■', '□', '■', '□', '■', '□'],
