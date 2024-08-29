@@ -1,47 +1,21 @@
+import 'package:chess_onitama/engine/moveset/offset_movement.dart';
 import 'package:chess_onitama/engine/pieces/piece.dart';
 import 'package:chess_onitama/engine/moveset/movement.dart';
 import 'package:chess_onitama/engine/utilities/position.dart';
 
-class Bishop extends Piece {
-  Bishop({required super.chess, required super.chessColor});
-
-  @override
-  List<Position> legalMoves(Position from) {
-    var (row, col) = from.values;
-    var legalMoves = <Position>[];
-
-    /// directions: [right-up, left-down, right-down, left-up]
-    List<MovementKind> directions = [
-      MovementKind.start,
-      MovementKind.start,
-      MovementKind.start,
-      MovementKind.start
+class Bishop extends Piece with OffsetMovement{
+  Bishop({required super.chess, required super.chessColor}) {
+    offsets = [
+      const Position(-1, -1),
+      const Position(-1, 1),
+      const Position(1, -1),
+      const Position(1, 1),
     ];
-
-    for (var i = 1; i < 8; i++) {
-      directions[0] = evaluateMovement(current: directions[0], Position(row + i, col + i));
-      if (directions[0] != MovementKind.stop) {
-        legalMoves.add(Position(row + i, col + i));
-      }
-
-      directions[1] = evaluateMovement(current: directions[1], Position(row - i, col - i));
-      if (directions[1] != MovementKind.stop) {
-        legalMoves.add(Position(row - i, col - i));
-      }
-
-      directions[2] = evaluateMovement(current: directions[2], Position(row + i, col - i));
-      if (directions[2] != MovementKind.stop) {
-        legalMoves.add(Position(row + i, col - i));
-      }
-
-      directions[3] = evaluateMovement(current: directions[3], Position(row - i, col + i));
-      if (directions[3] != MovementKind.stop) {
-        legalMoves.add(Position(row - i, col + i));
-      }
-    }
-    return legalMoves;
   }
 
+  @override
+  List<Position> legalMoves(Position from) => reachablePosition(from);
+  
   @override
   MovementKind evaluateMovement(Position position, {required MovementKind current}) {
     if (current == MovementKind.stop || current == MovementKind.capture) {
