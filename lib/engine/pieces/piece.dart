@@ -8,11 +8,9 @@ import 'package:chess_onitama/engine/pieces/rook.dart';
 import 'package:chess_onitama/engine/utilities/color.dart';
 import 'package:chess_onitama/engine/moveset/movement.dart';
 
-abstract class Piece implements Movement {
-  final Chess chess;
-  final ChessColor chessColor;
+abstract class Piece extends Movement {
 
-  const Piece({required this.chess, required this.chessColor});
+  const Piece({required super.chess, required super.chessColor});
 
   factory Piece.fromUnicode(String piece, Chess board) {
     Map<String, Function> pieces = {
