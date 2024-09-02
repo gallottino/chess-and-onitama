@@ -15,13 +15,13 @@ class MainApp extends StatelessWidget {
       home: const Scaffold(
         backgroundColor: Colors.black,
         body: Center(
-          child: Column(
-            children: [
-              Text("CHESS ♔", style: TextStyle(color: Colors.white, fontSize: 30)),
-              ChessWidget()
-            ],
-          )
-        ),
+            child: Column(
+          children: [
+            Text("CHESS ♔",
+                style: TextStyle(color: Colors.white, fontSize: 30)),
+            ChessWidget()
+          ],
+        )),
       ),
     );
   }
