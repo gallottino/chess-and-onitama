@@ -23,11 +23,13 @@ void main() {
     expect(chess.moveAt(newPosition), true);
     expect(chess.selectedPos, null);
     expect(chess.isEmptyAt(currentPos), true);
+    expect(chess.getPieceAt(newPosition).firstMove, false);
 
     currentPos = const Position(1, 4);
     newPosition = const Position(3, 4);
     chess.selectPieceAt(currentPos);
-    chess.moveAt(newPosition);
+    expect(chess.moveAt(newPosition), true);
+    expect(chess.getPieceAt(newPosition).firstMove, false);
 
     currentPos = const Position(4, 3);
     newPosition = const Position(3, 4);

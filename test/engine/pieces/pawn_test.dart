@@ -110,7 +110,7 @@ void main() {
     expect(actual, expected);
   });
 
-  test('External pawn capture border', (){
+  test('External pawn capture border', () {
     /// ♔	♕	♖	♗	♘	♙	♚	♛	♜	♝	♞	♟
     var chessboard = [
       ['■', '□', '■', '□', '■', '□', '■', '□'],

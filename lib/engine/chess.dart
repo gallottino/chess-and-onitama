@@ -53,18 +53,14 @@ class Chess {
     var piece = getPieceAt(selectedPos!);
     return piece.legalMoves(selectedPos!).contains(position);
   }
+
   bool moveAt(Position newPosition) {
-    if(!canMoveAt(newPosition)) return false;
+    if (!canMoveAt(newPosition)) return false;
 
-    var selectedPiece = getPieceAt(selectedPos!);
-    var (row,col) = selectedPos!.values;
-    board[row][col] = null;
-
-    if (!isEmptyAt(newPosition)) {
-      capturedPieces.add(getPieceAt(newPosition));
+    var capturePiece = getPieceAt(selectedPos!).move(selectedPos!, newPosition);
+    if (capturePiece != null) {
+      capturedPieces.add(capturePiece);
     }
-    var (newRow, newCol) = newPosition.values;
-    board[newRow][newCol] = selectedPiece;
 
     selectedPos = null;
     turn = turn == ChessColor.white ? ChessColor.black : ChessColor.white;
@@ -73,7 +69,7 @@ class Chess {
 
   bool isEmptyAt(Position position) {
     var (row, col) = position.values;
-    if(row < 0 || row >= 8 || col < 0 || col >= 8) {
+    if (row < 0 || row >= 8 || col < 0 || col >= 8) {
       return true;
     }
     return board[row][col] == null;

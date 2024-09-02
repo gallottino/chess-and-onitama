@@ -3,9 +3,7 @@ import 'package:chess_onitama/engine/utilities/color.dart';
 import 'package:chess_onitama/engine/utilities/position.dart';
 
 class Pawn extends Piece {
-  bool firstMove;
-  Pawn(
-      {required super.chess, required super.chessColor, this.firstMove = true});
+  Pawn({required super.chess, required super.chessColor});
 
   @override
   List<Position> legalMoves(Position from) {
