@@ -109,4 +109,31 @@ void main() {
 
     expect(actual, expected);
   });
+
+  test('External pawn capture border', (){
+    /// ♔	♕	♖	♗	♘	♙	♚	♛	♜	♝	♞	♟
+    var chessboard = [
+      ['■', '□', '■', '□', '■', '□', '■', '□'],
+      ['□', '■', '□', '■', '□', '■', '□', '■'],
+      ['■', '□', '■', '□', '■', '□', '■', '□'],
+      ['□', '■', '□', '■', '□', '■', '□', '■'],
+      ['■', '□', '■', '□', '■', '□', '■', '□'],
+      ['□', '■', '♜', '■', '♖', '■', '□', '■'],
+      ['♙', '□', '■', '□', '■', '□', '■', '□'],
+      ['□', '■', '□', '■', '□', '■', '□', '■'],
+    ];
+
+    Chess chess = Chess.fromUnicode(chessboard);
+    Position current = const Position(6, 0);
+    var actual = chess.getPieceAt(current).legalMoves(current);
+    actual.sort();
+
+    var expected = [
+      const Position(4, 0),
+      const Position(5, 0),
+    ];
+    expected.sort();
+
+    expect(actual, expected);
+  });
 }

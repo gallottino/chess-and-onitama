@@ -70,6 +70,9 @@ class Chess {
 
   bool isEmptyAt(Position position) {
     var (row, col) = position.values;
+    if(row < 0 || row >= 8 || col < 0 || col >= 8) {
+      return true;
+    }
     return board[row][col] == null;
   }
 
