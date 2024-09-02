@@ -1,3 +1,4 @@
+import 'package:chess_onitama/widgets/chess_widget.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,10 +10,17 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
+    return MaterialApp(
+      theme: ThemeData(fontFamily: 'Pecita'),
+      home: const Scaffold(
+        backgroundColor: Colors.black,
         body: Center(
-          child: Text('Hello World!'),
+          child: Column(
+            children: [
+              Text("CHESS ♔", style: TextStyle(color: Colors.white, fontSize: 30)),
+              ChessWidget()
+            ],
+          )
         ),
       ),
     );
