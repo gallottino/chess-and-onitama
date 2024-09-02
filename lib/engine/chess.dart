@@ -45,16 +45,19 @@ class Chess {
 
   void deselect() => selectedPos = null;
 
-  bool moveAt(Position newPosition) {
+  bool canMoveAt(Position position) {
     if (selectedPos == null) {
       return false;
     }
 
-    var (row, col) = selectedPos!.values;
+    var piece = getPieceAt(selectedPos!);
+    return piece.legalMoves(selectedPos!).contains(position);
+  }
+  bool moveAt(Position newPosition) {
+    if(!canMoveAt(newPosition)) return false;
+
     var selectedPiece = getPieceAt(selectedPos!);
-    if (selectedPiece.legalMoves(selectedPos!).contains(newPosition) == false) {
-      return false;
-    }
+    var (row,col) = selectedPos!.values;
     board[row][col] = null;
 
     if (!isEmptyAt(newPosition)) {
