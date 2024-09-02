@@ -38,4 +38,9 @@ class Pawn extends Piece {
 
     return moves;
   }
+
+  @override
+  String toString() {
+    return chessColor == ChessColor.white ? '♙' : '♟';
+  }
 }
