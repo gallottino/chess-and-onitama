@@ -1,13 +1,16 @@
 import 'package:chess_onitama/engine/pieces/piece.dart';
+import 'package:chess_onitama/engine/utilities/color.dart';
 import 'package:chess_onitama/engine/utilities/position.dart';
 
 class Chess {
   final List<List<Piece?>> board;
+  final List<Piece> capturedPieces = [];
+
+  Position? selectedPos;
+  ChessColor turn = ChessColor.white;
 
   Chess.empty()
       : board = List.generate(8, (i) => List.generate(8, (j) => null));
-
-  const Chess.withBoard(this.board);
 
   factory Chess.fromUnicode(List<List<String>> chessboard) {
     Chess chess = Chess.empty();
@@ -24,6 +27,45 @@ class Chess {
     }
 
     return chess;
+  }
+
+  bool selectPieceAt(Position position) {
+    if (isEmptyAt(position)) {
+      return false;
+    }
+
+    var piece = getPieceAt(position);
+    if (piece.chessColor != turn) {
+      return false;
+    }
+
+    selectedPos = position;
+    return true;
+  }
+
+  void deselect() => selectedPos = null;
+
+  bool moveAt(Position newPosition) {
+    if (selectedPos == null) {
+      return false;
+    }
+
+    var (row, col) = selectedPos!.values;
+    var selectedPiece = getPieceAt(selectedPos!);
+    if (selectedPiece.legalMoves(selectedPos!).contains(newPosition) == false) {
+      return false;
+    }
+    board[row][col] = null;
+
+    if (!isEmptyAt(newPosition)) {
+      capturedPieces.add(getPieceAt(newPosition));
+    }
+    var (newRow, newCol) = newPosition.values;
+    board[newRow][newCol] = selectedPiece;
+
+    selectedPos = null;
+    turn = turn == ChessColor.white ? ChessColor.black : ChessColor.white;
+    return true;
   }
 
   bool isEmptyAt(Position position) {
