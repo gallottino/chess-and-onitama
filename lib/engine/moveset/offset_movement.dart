@@ -44,7 +44,7 @@ mixin OffsetMovement implements Movement {
     }
 
     var (row, col) = newPosition.values;
-    if (row < 0 || row >= 8 || col < 0 || col >= 8) {
+    if (row < 0 || row >= chess.height || col < 0 || col >= chess.width) {
       return MovementKind.stop;
     }
 

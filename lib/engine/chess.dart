@@ -6,17 +6,21 @@ class Chess {
   final List<List<Piece?>> board;
   final List<Piece> capturedPieces = [];
 
+  final int width, height;
+
   Position? selectedPos;
   ChessColor turn = ChessColor.white;
 
-  Chess.empty()
-      : board = List.generate(8, (i) => List.generate(8, (j) => null));
+  Chess.empty({this.width = 8, this.height = 8})
+      : board = List.generate(height, (i) => List.generate(width, (j) => null));
 
   factory Chess.fromUnicode(List<List<String>> chessboard) {
-    Chess chess = Chess.empty();
+    int width = chessboard[0].length;
+    int height = chessboard.length;
+    Chess chess = Chess.empty(width: width, height: height);
 
-    for (int row = 0; row < 8; row++) {
-      for (int col = 0; col < 8; col++) {
+    for (int row = 0; row < height; row++) {
+      for (int col = 0; col < width; col++) {
         var unicodeValue = chessboard[row][col];
         if (['■', '□'].contains(unicodeValue)) {
           continue;
@@ -69,7 +73,7 @@ class Chess {
 
   bool isEmptyAt(Position position) {
     var (row, col) = position.values;
-    if (row < 0 || row >= 8 || col < 0 || col >= 8) {
+    if (row < 0 || row >= height || col < 0 || col >= width) {
       return true;
     }
     return board[row][col] == null;
