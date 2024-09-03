@@ -1,10 +1,10 @@
 import 'package:chess_onitama/engine/chess.dart';
-import 'package:chess_onitama/engine/pieces/bishop.dart';
-import 'package:chess_onitama/engine/pieces/king.dart';
-import 'package:chess_onitama/engine/pieces/knight.dart';
-import 'package:chess_onitama/engine/pieces/pawn.dart';
-import 'package:chess_onitama/engine/pieces/queen.dart';
-import 'package:chess_onitama/engine/pieces/rook.dart';
+import 'package:chess_onitama/engine/pieces/chess/bishop.dart';
+import 'package:chess_onitama/engine/pieces/chess/king.dart';
+import 'package:chess_onitama/engine/pieces/chess/knight.dart';
+import 'package:chess_onitama/engine/pieces/chess/pawn.dart';
+import 'package:chess_onitama/engine/pieces/chess/queen.dart';
+import 'package:chess_onitama/engine/pieces/chess/rook.dart';
 import 'package:chess_onitama/engine/utilities/color.dart';
 import 'package:chess_onitama/engine/moveset/movement.dart';
 
