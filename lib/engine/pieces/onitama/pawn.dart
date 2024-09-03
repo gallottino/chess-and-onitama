@@ -15,13 +15,15 @@ class Pawn extends Piece with OffsetMovement {
     maxMoves = 1;
   }
 
+  bool get reversed => ChessColor.black == chessColor;
+
   @override
   List<Position> legalMoves(Position from) {
     if (moveCard == null) {
       return [];
     }
 
-    var direction = ChessColor.white == chessColor ? 1 : -1;
+    var direction = reversed ? -1 : 1;
 
     offsets = moveCard!.offsets.map((offset) {
       return offset * direction;
