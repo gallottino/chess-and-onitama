@@ -21,4 +21,7 @@ flutter:
     - family: Pecita
       fonts:
         - asset: assets/fonts/Pecita.otf
+  
+  assets:
+    - assets/
 
