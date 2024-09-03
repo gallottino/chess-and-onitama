@@ -12,7 +12,7 @@ void main() {
       Position(1, 0),
     ]);
 
-    Onitama onitama = Onitama.empty(moveCards: [tiger]);
+    Onitama onitama = Onitama.init();
     var studentPawn = onitama.board[2][0] =
         Pawn(chess: onitama, chessColor: ChessColor.white);
     studentPawn.moveCard = tiger;
@@ -28,7 +28,7 @@ void main() {
   });
 
   test('Pawn without MoveCard', () {
-    Onitama onitama = Onitama.empty(moveCards: []);
+    Onitama onitama = Onitama.init();
     var studentPawn = onitama.board[2][0] =
         Pawn(chess: onitama, chessColor: ChessColor.white);
 
