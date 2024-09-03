@@ -7,6 +7,10 @@ class Position implements Comparable<Position> {
     return Position(row + other.row, col + other.col);
   }
 
+  Position operator -(Position other) {
+    return Position(row - other.row, col - other.col);
+  }
+
   Position operator *(int value) {
     return Position(row * value, col * value);
   }

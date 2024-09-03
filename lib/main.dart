@@ -1,4 +1,4 @@
-import 'package:chess_onitama/widgets/chess_widget.dart';
+import 'package:chess_onitama/widgets/onitama/onitama_widget.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,9 +17,10 @@ class MainApp extends StatelessWidget {
         body: Center(
             child: Column(
           children: [
-            Text("CHESS ♔",
+            Text("Onitama",
                 style: TextStyle(color: Colors.white, fontSize: 30)),
-            ChessWidget()
+            Text("(おにたま)", style: TextStyle(color: Colors.white, fontSize: 20)),
+            OnitamaWidget()
           ],
         )),
       ),

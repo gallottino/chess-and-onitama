@@ -1,6 +1,5 @@
 import 'package:chess_onitama/engine/pieces/piece.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class PieceWidget extends StatelessWidget {
   final Function? onDrag;

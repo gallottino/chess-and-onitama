@@ -80,4 +80,13 @@ class Onitama extends Chess {
 
     return moved;
   }
+
+  void loadCardsFromJson(Map<String, dynamic> json) {
+    moveCards = [];
+    for (var moveCard in json["cards"]) {
+      moveCards!.add(MoveCard.fromJson(moveCard));
+    }
+
+    draftCards();
+  }
 }
