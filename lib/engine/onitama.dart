@@ -54,4 +54,30 @@ class Onitama extends Chess {
 
     nextCard = moveCards!.removeLast();
   }
+
+  @override
+  bool canMoveAt(Position position) {
+    if (selectedPos == null || selectedCardIndex == null) {
+      return false;
+    }
+
+    var piece = getPieceAt(selectedPos!) as Pawn;
+    piece.moveCard = selectedCard;
+    return super.canMoveAt(position);
+  }
+
+  @override
+  bool moveAt(Position newPosition) {
+    var currentTurn = turn;
+    MoveCard? current = selectedCard;
+
+    var moved = super.moveAt(newPosition);
+    if (moved) {
+      playerCards[currentTurn]![selectedCardIndex!] = nextCard!;
+      nextCard = current;
+      selectedCardIndex = null;
+    }
+
+    return moved;
+  }
 }
