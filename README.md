@@ -25,6 +25,11 @@ With a clean and modular codebase, we extended the game to support Onitama:
 - **Movement Cards**: Introduced a new class to handle the dynamic movement cards unique to Onitama.
 - **Customizable Boards**: Added support for different board sizes and configurations.
 
+## Preview
+| **Chess** (branch: *[main](https://github.com/gallottino/chess-and-onitama)*) | **Onitama** (branch: *[onitama-variant](https://github.com/gallottino/chess-and-onitama(https://github.com/gallottino/chess-and-onitama/tree/onitama-variant))*) |
+| -------- | ------- |
+| <img width="445" alt="Screenshot 2024-09-19 alle 12 22 21" src="https://github.com/user-attachments/assets/52975943-5c99-4923-aa84-835858ea3205"> | <img width="608" alt="Screenshot 2024-09-19 alle 12 18 47" src="https://github.com/user-attachments/assets/9dfded50-b914-4724-a741-c995883889da"> |
+
 ## Resources
 
 ### Books
