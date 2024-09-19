@@ -16,36 +16,26 @@ class Bishop extends Piece {
 
   @override
   List<Position> legalMoves(Position from) {
-    var (row, col) = from.values;
     var legalMoves = <Position>[];
 
-    /// directions: [right-up, right-down, left-up, left-down]
-    List<Movement> directions = [
-      Movement.start,
-      Movement.start,
-      Movement.start,
-      Movement.start
+    List<Position> offesets = [
+      const Position(1, 1),
+      const Position(1, -1),
+      const Position(-1, -1),
+      const Position(-1, 1),
     ];
+    List<Movement> directions = List.filled(offesets.length, Movement.start);
 
-    for (var i = 1; i < 8; i++) {
-      directions[0] = evaluateMovement(current: directions[0], Position(row + i, col + i));
-      if (directions[0] != Movement.stop) {
-        legalMoves.add(Position(row + i, col + i));
-      }
+    for(var(index, offset) in offesets.indexed) {
+      for (var i = 1; i < 8; i++) {
+  
+        var offsetPos = from + (offset * i);
+        directions[index] = evaluateMovement(current: directions[index], offsetPos);
 
-      directions[1] = evaluateMovement(current: directions[1], Position(row + i, col - i));
-      if (directions[1] != Movement.stop) {
-        legalMoves.add(Position(row + i, col - i));
-      }
+        if (directions[index] != Movement.stop) {
+          legalMoves.add(offsetPos);
+        }
 
-      directions[2] = evaluateMovement(current: directions[2], Position(row - i, col - i));
-      if (directions[2] != Movement.stop) {
-        legalMoves.add(Position(row - i, col - i));
-      }
-
-      directions[3] = evaluateMovement(current: directions[3], Position(row - i, col + i));
-      if (directions[3] != Movement.stop) {
-        legalMoves.add(Position(row - i, col + i));
       }
     }
     return legalMoves;
