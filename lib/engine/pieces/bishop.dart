@@ -5,12 +5,23 @@ import 'package:chess_onitama/engine/utilities/position.dart';
 class Bishop extends Piece {
   Bishop({required super.chess, required super.chessColor});
 
+
+
+  // ['■', '□', '■', '□', '■', '□', '■', 'x'],
+  // ['x', '■', '□', '■', '□', '■', 'x', '■'],
+  // ['■', 'x', '■', '□', '■', 'x', '■', '□'],
+  // ['□', '■', 'x', '■', 'x', '■', '□', '■'],
+  // ['■', 'x', '■', '♝', '■', '□', '■', '□'],
+  // ['□', '■', 'x', '■', 'x', '■', '□', '■'],
+  // ['■', 'x', '■', '□', '■', 'x', '■', '□'],
+  // ['x', '■', '□', '■', '□', '■', 'x', '■'],
+
   @override
   List<Position> legalMoves(Position from) {
     var (row, col) = from.values;
     var legalMoves = <Position>[];
 
-    /// directions: [right-up, left-down, right-down, left-up]
+    /// directions: [right-up, right-down, left-up, left-down]
     List<Movement> directions = [
       Movement.start,
       Movement.start,
@@ -24,14 +35,14 @@ class Bishop extends Piece {
         legalMoves.add(Position(row + i, col + i));
       }
 
-      directions[1] = evaluateMovement(current: directions[1], Position(row - i, col - i));
+      directions[1] = evaluateMovement(current: directions[1], Position(row + i, col - i));
       if (directions[1] != Movement.stop) {
-        legalMoves.add(Position(row - i, col - i));
+        legalMoves.add(Position(row + i, col - i));
       }
 
-      directions[2] = evaluateMovement(current: directions[2], Position(row + i, col - i));
+      directions[2] = evaluateMovement(current: directions[2], Position(row - i, col - i));
       if (directions[2] != Movement.stop) {
-        legalMoves.add(Position(row + i, col - i));
+        legalMoves.add(Position(row - i, col - i));
       }
 
       directions[3] = evaluateMovement(current: directions[3], Position(row - i, col + i));
