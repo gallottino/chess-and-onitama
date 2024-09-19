@@ -1,0 +1,64 @@
+function refactor {
+
+    if [ -z "$1" ]; then
+        echo "Usage: refactor <technique>"
+        return 1
+    fi
+
+    local technique=$1
+    if [ $technique = "start demo" ]; then
+        git checkout b4328f5b
+    elif [ $technique = "guard clause" ]; then
+        echo ""
+        echo "GUARD CLAUSE"
+        echo "------------"
+        echo ""
+        echo "Description:"
+        echo ""
+        echo "Guard Clause Refactoring is a programming technique that simplifies condition checks within a function or method. It involves quickly verifying "exceptional" or "invalid" conditions and immediately returning a result or exiting the function, thus avoiding deep nesting of conditional blocks (like "if-else"). This makes the code more readable and maintainable, as edge cases are handled upfront, leaving the main logic flow clear and straightforward."
+        echo ""
+        git checkout fcd9705
+    elif [ $technique = "avoid duplication" ]; then
+        echo ""
+        echo "AVOID DUPLICATION"
+        echo "-----------------"
+        echo ""
+        echo "Description:"
+        echo ""
+        echo "Avoiding Duplication Refactoring is a programming technique that involves identifying and eliminating duplicate code in a codebase. This is done to improve code quality, reduce maintenance costs, and make the code more maintainable. By removing duplication, you can make the code more concise, easier to understand, and less error-prone."
+        echo ""
+        git checkout eacb1af
+    elif [ $technique = "moving feature" ]; then
+        echo ""
+        echo "MOVING FEATURE"
+        echo "--------------"
+        echo ""
+        echo "Description:"
+        echo ""
+        echo "Moving Feature Refactoring is a programming technique that involves moving a method or field from one class to another. This is done to improve the organization of the code, reduce duplication, and make the code more maintainable. By moving a feature to a more appropriate class, you can make the code more cohesive and easier to understand."
+        echo ""
+        git checkout 299e894
+    else
+        echo "Unknown refactoring technique: $1"
+        return 1
+    fi
+}
+
+function show {
+    if [ -z "$1" ]; then
+        echo "Usage: show <game variant>"
+        return 1
+    fi
+
+    local variant=$1
+    if [ $variant = "chess" ]; then
+        echo "Showing chess game.."
+        git checkout 3aff6681 && flutter run -d chrome
+    elif [ $variant = "onitama" ]; then
+        echo "Showing onitama game.."
+        git checkout 812504bd && flutter run -d chrome
+    else
+        echo "Unknown game variant: $1"
+        return 1
+    fi
+}
