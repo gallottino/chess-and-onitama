@@ -11,7 +11,7 @@ The initial code had several code smells, including:
 
 ## Refactoring Techniques Used
 1. **Guard Clause**: We simplify conditional expression for a method ([fcd9705](https://github.com/gallottino/chess-and-onitama/commit/fcd970545f020cc79244f48660fb1350bf0d3907))
-2. **Remove Duplicated Code**: We identified and consolidated duplicated code into reusable functions ([eacb1af](https://github.com/gallottino/chess-and-onitama/tree/eacb1afd184b012c0bd0131e0e3034ecb61774c9))
+2. **Remove Duplicated Code**: We identified and consolidated duplicated code into reusable functions ([eacb1af](https://github.com/gallottino/chess-and-onitama/commit/eacb1afd184b012c0bd0131e0e3034ecb61774c9))
 4. **Moving Feature**: We extrapolate the offset movement feature for all pieces ([299e894](https://github.com/gallottino/chess-and-onitama/commit/299e8948f0868d0a29823f7eb15d6b389693ee6a))
 5. **Many Other techniques** (see in git history refactor keyword)
 
