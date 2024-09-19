@@ -10,7 +10,7 @@ The initial code had several code smells, including:
 - **Lack of Abstraction**: Hardcoded values and lack of modularity.
 
 ## Refactoring Techniques Used
-1. **Guard Clause**: We simplify conditional expression for a method: showed in the commit ([fcd9705]())
+1. **Guard Clause**: We simplify conditional expression for a method ([fcd9705]())
 2. **Remove Duplicated Code**: We identified and consolidated duplicated code into reusable functions ([eacb1af]())
 4. **Moving Feature**: We extrapolate the offset movement feature for all pieces ([299e894]())
 5. **Many Other techniques** (see in git history refactor keyword)
