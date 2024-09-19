@@ -5,8 +5,6 @@ import 'package:chess_onitama/engine/utilities/position.dart';
 class Bishop extends Piece {
   Bishop({required super.chess, required super.chessColor});
 
-
-
   // ['■', '□', '■', '□', '■', '□', '■', 'x'],
   // ['x', '■', '□', '■', '□', '■', 'x', '■'],
   // ['■', 'x', '■', '□', '■', 'x', '■', '□'],

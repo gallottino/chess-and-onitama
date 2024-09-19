@@ -11,6 +11,14 @@ class Position implements Comparable<Position> {
     return other is Position && compareTo(other) == 0;
   }
 
+  Position operator +(Position other) {
+    return Position(row + other.row, col + other.col);
+  }
+
+  Position operator *(int factor) {
+    return Position(row * factor, col * factor);
+  }
+
   @override
   int compareTo(Position other) {
     if (row == other.row && col == other.col) {
