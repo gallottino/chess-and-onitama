@@ -63,13 +63,17 @@ class Bishop extends Piece {
     }
 
     Piece? piece = chess.getPiece((row, col));
-    if (piece != null) {
-      if (piece.chessColor == chessColor) {
-        return Movement.stop;
-      } else {
-        return Movement.capture;
-      }
+    
+    var isEmpty = piece == null;
+    if(isEmpty) {
+      return Movement.move;
     }
-    return Movement.move;
+
+    var isOpponentPiece = piece.chessColor != chessColor;
+    if(isOpponentPiece) {
+      return Movement.capture;
+    }
+
+    return Movement.stop;
   }
 }
